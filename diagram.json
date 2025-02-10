@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "José Guilherme Marques",
+  "editor": "wokwi",
+  "title": "Raspberry Pi Pico W - Servo Motor e LED RGB",
+  "description": "Configuração detalhada para controle de servomotor e LED",
+  "parts": [
+    { 
+      "type": "board-pi-pico-w", 
+      "id": "pico", 
+      "top": 0, 
+      "left": 0, 
+      "attrs": {
+        "variant": "PIW"
+      } 
+    },
+    { 
+      "type": "wokwi-servo", 
+      "id": "servo1", 
+      "top": 17.2, 
+      "left": 163.2, 
+      "attrs": {
+        "name": "SG90",
+        "color": "white"
+      } 
+    },
+    {
+      "type": "led-rgb",
+      "id": "rgb1",
+      "top": 150,
+      "left": 300,
+      "attrs": {
+        "color": "white",
+        "common": "cathode"
+      }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:GP22", "servo1:PWM", "blue", [ "h23.06", "v-32.05" ] ],
+    [ "pico:GND.8", "servo1:GND", "black", [ "h51.86", "v35.15" ] ],
+    [ "pico:3V3", "servo1:V+", "red", [ "h32.66", "v25.55" ] ],
+    [ "pico:GP12", "rgb1:c", "green", [ "h50", "v-30" ] ],
+    [ "pico:GND.3", "rgb1:gnd", "black", [ "h70", "v-10" ] ]
+  ],
+  "dependencies": {},
+  "probe": {
+    "GPIO22": "Servo Signal",
+    "GPIO12": "LED RGB Control"
+  }
+}
