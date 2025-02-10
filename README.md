@@ -1,10 +1,8 @@
 # Controle de Servomotor com Raspberry Pi Pico W
 
 ## 📋 Descrição do Projeto
-Projeto de controle de servomotor utilizando PWM no microcontrolador Raspberry Pi Pico W, com movimentação em diferentes ângulos e interação com LED RGB.
+Projeto de controle de servomotor utilizando PWM no microcontrolador Raspberry Pi Pico W, com movimentação em diferentes ângulos e interação com LED RGB. - Desenvolvido como atividade prática do curso de Sistemas Embarcados do programa Embarcatech.
 
-## 🔗 Repositório
-[https://github.com/guilhermejnr/servomotor_PWM](https://github.com/guilhermejnr/servomotor_PWM)
 
 ## 🎥 Demonstração
 **Vídeo do Projeto:** [https://drive.google.com/file/d/1HQGgXT4XQzAb43-ODDuPORHwlZMmHSoQ/view?usp=sharing]
