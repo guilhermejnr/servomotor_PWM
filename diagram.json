@@ -2,51 +2,66 @@
   "version": 1,
   "author": "José Guilherme Marques",
   "editor": "wokwi",
-  "title": "Raspberry Pi Pico W - Servo Motor e LED RGB",
-  "description": "Configuração detalhada para controle de servomotor e LED",
+  "title": "Controle de Servomotor PWM com LED",
+  "description": "Projeto de controle de servomotor usando Raspberry Pi Pico W com LED indicador",
   "parts": [
-    { 
-      "type": "board-pi-pico-w", 
-      "id": "pico", 
-      "top": 0, 
-      "left": 0, 
-      "attrs": {
-        "variant": "PIW"
-      } 
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -396.85,
+      "left": -294.05,
+      "attrs": { 
+        "builder": "pico-sdk",
+        "env": "pico-sdk"
+      }
     },
     { 
       "type": "wokwi-servo", 
       "id": "servo1", 
-      "top": 17.2, 
-      "left": 163.2, 
-      "attrs": {
-        "name": "SG90",
-        "color": "white"
+      "top": -366.8, 
+      "left": -57.6, 
+      "attrs": { 
+        "color": "blue",
+        "horn": "single",
+        "signal": "PWM"
       } 
     },
     {
-      "type": "led-rgb",
-      "id": "rgb1",
-      "top": 150,
-      "left": 300,
-      "attrs": {
-        "color": "white",
-        "common": "cathode"
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -349.2,
+      "left": -428.2,
+      "attrs": { 
+        "color": "blue",
+        "label": "LED RGB",
+        "flip": ""
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -245.65,
+      "left": -374.4,
+      "attrs": { 
+        "value": "220",
+        "label": "R1 220Ω"
       }
     }
   ],
   "connections": [
     [ "pico:GP0", "$serialMonitor:RX", "", [] ],
     [ "pico:GP1", "$serialMonitor:TX", "", [] ],
-    [ "pico:GP22", "servo1:PWM", "blue", [ "h23.06", "v-32.05" ] ],
-    [ "pico:GND.8", "servo1:GND", "black", [ "h51.86", "v35.15" ] ],
-    [ "pico:3V3", "servo1:V+", "red", [ "h32.66", "v25.55" ] ],
-    [ "pico:GP12", "rgb1:c", "green", [ "h50", "v-30" ] ],
-    [ "pico:GND.3", "rgb1:gnd", "black", [ "h70", "v-10" ] ]
+    [ "pico:GND.8", "servo1:GND", "#8f4814", [ "h67.51", "v67.2" ] ],
+    [ "pico:3V3", "servo1:V+", "red", [ "h48.31", "v38.3" ] ],
+    [ "pico:GP22", "servo1:PWM", "orange", [ "h67.51", "v-19.4" ] ],
+    [ "pico:GP12", "r1:2", "blue", [ "h0" ] ],
+    [ "r1:1", "led1:A", "blue", [ "h-28.8", "v-67.2" ] ],
+    [ "led1:C", "pico:GND.4", "black", [ "v0" ] ]
   ],
   "dependencies": {},
-  "probe": {
-    "GPIO22": "Servo Signal",
-    "GPIO12": "LED RGB Control"
+  "serialMonitor": {
+    "display": "terminal",
+    "convertEol": true,
+    "baudRate": 115200
   }
 }
